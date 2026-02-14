@@ -54,17 +54,35 @@
     <div id="message"></div>
 
     <script>
-        function moveNo() {
-            const noBtn = document.getElementById("no");
-            noBtn.style.top = Math.random() * window.innerHeight + "px";
-            noBtn.style.left = Math.random() * window.innerWidth + "px";
-        }
+    let messages = [
+        "Are you sure?",
+        "What if I asked really nicely?"
+    ];
 
-        function sayYes() {
-            document.getElementById("message").innerHTML =
-                "Yayyyy 😍💘 <br><br> come to Chennai, Ruchir is not here 😌✨";
-        }
+    let clickCount = 0;
+    let yesSize = 20; // starting font size
+
+    function changeNo() {
+        const noBtn = document.getElementById("no");
+        const yesBtn = document.getElementById("yes");
+
+        // Change NO button text
+        noBtn.innerText = messages[clickCount % messages.length];
+
+        // Increase YES button size
+        yesSize += 5;
+        yesBtn.style.fontSize = yesSize + "px";
+        yesBtn.style.padding = (15 + clickCount * 3) + "px " + (30 + clickCount * 5) + "px";
+
+        clickCount++;
+    }
+
+    function sayYes() {
+        document.getElementById("message").innerHTML =
+            "Yayyyy 😍💘 <br><br> come to Chennai, Ruchir is not here 😌✨";
+    }
     </script>
+
 
 </body>
 </html>
