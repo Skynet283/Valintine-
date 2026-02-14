@@ -2,14 +2,14 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Will You Be My Valentine?</title>
+
     <style>
         body {
             text-align: center;
             font-family: Arial, sans-serif;
             background-color: #ffe6f0;
-            margin-top: 100px;
+            margin-top: 60px;
         }
 
         h1 {
@@ -33,7 +33,6 @@
         #no {
             background-color: gray;
             color: white;
-            position: absolute;
         }
 
         #message {
@@ -41,13 +40,17 @@
             color: #ff0066;
             margin-top: 30px;
         }
+
+        img {
+            margin-bottom: 20px;
+        }
     </style>
 </head>
-<body>
-    <video id="mainVideo" width="300" autoplay loop muted>
-    <source src="love.mp4" type="video/mp4">
-    </video>
 
+<body>
+
+    <!-- Initial Happy GIF -->
+    <img id="mainGif" src="happy.gif" width="300">
 
     <h1>Will You Be My Valentine Abhii? 💖</h1>
 
@@ -57,50 +60,65 @@
     <div id="message"></div>
 
     <script>
-    let messages = [
-        "Are you sure? 🥺",
-        "What if I asked really nicely? 🥺👉👈",
-        "Pretty Pleaseee 💖",
-        "With a white chocolate cake and strawberry on top 🍰🍓",
-        "What about a Matcha Frosite 🍵✨",
-        "I will send you strawberry every week 🍓💌",
-        "Please Pookie 🥹",
-        "I will stop being rude to you 😔",
-        "But :( 💔",
-        "I'm going to die 💀",
-        "Ok ok I will wake you up every morning ☀️😤",
-        "Yep I'm dead ⚰️",
-        "I will stop calling you dark chocolate 🍫😶",
-        "Ok now you are talking to Sachin's Ghost 👻",
-        "Please Babe 🥰",
-        ":(((((( 💔",
-        "Estoy Muerto 💀🇪🇸"
-    ];
+        let messages = [
+            "Are you sure? 🥺",
+            "What if I asked really nicely? 🥺👉👈",
+            "Pretty Pleaseee 💖",
+            "With a white chocolate cake and strawberry on top 🍰🍓",
+            "What about a Matcha Frosite 🍵✨",
+            "I will send you strawberry every week 🍓💌",
+            "Please Pookie 🥹",
+            "I will stop being rude to you 😔",
+            "But :( 💔",
+            "I'm going to die 💀",
+            "Ok ok I will wake you up every morning ☀️😤",
+            "Yep I'm dead ⚰️",
+            "I will stop calling you dark chocolate 🍫😶",
+            "Ok now you are talking to Sachin's Ghost 👻",
+            "Please Babe 🥰",
+            ":(((((( 💔",
+            "Estoy Muerto 💀🇪🇸"
+        ];
 
-    let clickCount = 0;
-    let yesSize = 20; // starting font size
+        let clickCount = 0;
+        let yesSize = 20;
+        let gifChanged = false;
 
-    function changeNo() {
-        const noBtn = document.getElementById("no");
-        const yesBtn = document.getElementById("yes");
+        function changeNo() {
+            const noBtn = document.getElementById("no");
+            const yesBtn = document.getElementById("yes");
+            const gif = document.getElementById("mainGif");
 
-        // Change NO button text
-        noBtn.innerText = messages[clickCount % messages.length];
+            // Change GIF only on first click
+            if (!gifChanged) {
+                gif.src = "cry.gif";
+                gifChanged = true;
+            }
 
-        // Increase YES button size
-        yesSize += 5;
-        yesBtn.style.fontSize = yesSize + "px";
-        yesBtn.style.padding = (15 + clickCount * 3) + "px " + (30 + clickCount * 5) + "px";
+            // Change NO text
+            if (clickCount < messages.length) {
+                noBtn.innerText = messages[clickCount];
+            } else {
+                noBtn.innerText = "NO:(((( 💔";
+            }
 
-        clickCount++;
-    }
+            // Grow YES button
+            yesSize += 5;
+            yesBtn.style.fontSize = yesSize + "px";
+            yesBtn.style.padding = (15 + clickCount * 2) + "px " + (30 + clickCount * 4) + "px";
 
-    function sayYes() {
-        document.getElementById("message").innerHTML =
-            "Yayyyy 😍💘 <br><br> come to Chennai, Ruchir is not here 😌✨";
-    }
+            clickCount++;
+        }
+
+        function sayYes() {
+            document.getElementById("message").innerHTML =
+                "Yayyyy 😍💘 <br><br> come to Chennai, Ruchir is not here 😌✨";
+
+            // Hide buttons
+            document.getElementById("yes").style.display = "none";
+            document.getElementById("no").style.display = "none";
+        }
     </script>
-
 
 </body>
 </html>
