@@ -111,13 +111,19 @@
         }
 
         function sayYes() {
+            const gif = document.getElementById("mainGif");
+        
             document.getElementById("message").innerHTML =
                 "Yayyyy 😍💘 <br><br> come to Chennai, Ruchir is not here 😌✨";
-
+        
+            // Change GIF to final one
+            gif.src = "make_out.gif";
+        
             // Hide buttons
             document.getElementById("yes").style.display = "none";
             document.getElementById("no").style.display = "none";
         }
+
     </script>
 
 </body>
