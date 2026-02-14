@@ -52,7 +52,7 @@
     <!-- Initial Happy GIF -->
     <img id="mainGif" src="happy.gif" width="300">
 
-    <h1>Will You Be My Valentine Abhii? 💖</h1>
+    <h1 id="mainQuestion">Will You Be My Valentine Abhii? 💖</h1>
 
     <button id="yes" onclick="sayYes()">Yes</button>
     <button id="no" onclick="changeNo()">No</button>
@@ -116,13 +116,17 @@
             document.getElementById("message").innerHTML =
                 "Yayyyy 😍💘 <br><br> come to Chennai, Ruchir is not here 😌✨";
         
-            // Change GIF to final one
+            // Change GIF
             gif.src = "make_out.gif";
         
             // Hide buttons
             document.getElementById("yes").style.display = "none";
             document.getElementById("no").style.display = "none";
+        
+            // Hide the question
+            document.getElementById("mainQuestion").style.display = "none";
         }
+
 
     </script>
 
